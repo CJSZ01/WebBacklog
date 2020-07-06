@@ -4,6 +4,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
@@ -26,8 +27,11 @@ public class Resenha {
 	
 	
 	@OneToOne(cascade = CascadeType.MERGE)
-	@PrimaryKeyJoinColumn
 	private Objeto objeto;
+	@Override
+	public String toString() {
+		return "Resenha [id=" + id + ", objeto=" + objeto + ", titulo=" + titulo + ", texto=" + texto + "]";
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

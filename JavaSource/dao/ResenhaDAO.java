@@ -9,10 +9,10 @@ import utils.JPAUtils;
 
 public class ResenhaDAO {
 
-	public static void Cadastrar(Resenha resenhaC) {
+	public static void Cadastrar(Resenha resenhaB) {
 		EntityManager manager = JPAUtils.getInstance();
 		manager.getTransaction().begin();
-		manager.persist(resenhaC);
+		manager.persist(resenhaB);
 		manager.getTransaction().commit();
 	}
 	

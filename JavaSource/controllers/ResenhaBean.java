@@ -19,6 +19,7 @@ public class ResenhaBean implements Serializable {
 	public ResenhaBean() {
 		listaResenhas = ResenhaDAO.Listar();
 		resenhaB = new Resenha();
+		
 	}
 	
 	private Resenha resenhaB;
@@ -42,6 +43,7 @@ public class ResenhaBean implements Serializable {
 	
 	
 	public String CadastrarResenha() {
+		System.out.println(resenhaB);
 		ResenhaDAO.Cadastrar(resenhaB);
 		resenhaB = new Resenha();
 		return ("Jogos.xhtml?faces-redirect=true");

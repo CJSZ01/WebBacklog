@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -58,6 +59,9 @@ public class Objeto {
 	}
 	
 	@OneToOne(mappedBy = "objeto",cascade = CascadeType.MERGE)
+	@JoinColumn(name="id", 
+    insertable=true, updatable=false, 
+    nullable=true)
 	private Resenha resenha;
 	@Override
 	public int hashCode() {
