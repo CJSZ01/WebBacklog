@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+<h:outputStylesheet library = "css" name = "style.css"  /> 
+<link rel="stylesheet" href="css/style.css"></link>
+</h:head> 
+<h:body> 
+	
+	<div styleClass="header">
+	
+	<nav Class="header">
+	<h1> <h:link outcome="Index"> <h:graphicImage value="/backlog.png" /> </h:link>
+	
+	<h:link outcome="Jogos"> Jogos </h:link> 
+	<h:link outcome="Filmes"> Filmes </h:link> 
+	<h:link outcome="Jogos"> Livros </h:link>
+	<h:link outcome="Resenhas"> Resenhas </h:link>
+	<h:link outcome="Jogos"> Login </h:link>
+	<h:link outcome="Jogos"> Logout </h:link>
+	</h1>
+	
+	</nav>
+	</div>
+	<div class="container">
+		<ui:insert name="content">
+		
+		</ui:insert>
+
+	</div>
+
+	<footer style="position: fixed; left: 0;bottom: 0; width: 100%; background-color: #007f7f; color: white;text-align: center;">Backlog Web Copyright © 2020 Duckman Enterprises 
+🦆 </footer>
+
+</h:body> 
+</html>

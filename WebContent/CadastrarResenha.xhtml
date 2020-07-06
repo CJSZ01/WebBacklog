@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/Templates/Template.xhtml"> 
+<title> Cadastro de Resenha - BacklogWeb </title>
+
+<ui:define name="content"> 
+
+<h:form>
+<h2>Nova Resenha</h2>
+<!--   <h:inputHidden  value="#{jogoBean.objetoB}" />  -->
+
+<h:outputLabel value="Objeto:" />
+					<h:selectOneMenu id="drpObjeto"
+						value="#{resenhaBean.resenhaB.objeto.id}"
+						styleClass="form-control col-6"
+						converter="omnifaces.SelectItemsIndexConverter"
+						required="true" requiredMessage="Campo obrigatório!">
+						<f:selectItem itemValue="#{null}" itemLabel="   SELECIONE   " />
+						<f:selectItems value="#{jogoBean.listaJogos}" var="jogo"
+							itemLabel="#{jogo.id}" itemValue="#{jogo.id}" />
+					</h:selectOneMenu>
+					<h:message for="drpCategorias" styleClass="text-danger" />
+					
+<!--<h:outputLabel value="Debug ID " />
+<h:inputText  value="#{resenhaBean.resenhaB.objeto.id}" />-->
+
+<h:outputLabel value="Título: " />
+<h:inputText value="#{resenhaBean.resenhaB.titulo}" />
+
+<br></br>
+
+<h:inputTextarea value="#{resenhaBean.resenhaB.texto}" />
+<h:commandButton action="#{resenhaBean.CadastrarResenha()}" value="Enter"></h:commandButton>
+</h:form>
+</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+
+<ui:composition template="/Templates/Template.xhtml"> 
+<title> Jogos - BacklogWeb </title>
+<ui:define name="content"> 
+
+<div Style="position: absolute; left: 0px;padding:12px; ">
+		<h:form>
+		<h:commandButton image="game.png" alt="Novo Jogo" style="height: 100px; width: 100px; border:2px; border-color:#007f7f;" action="CadastrarJogo" value="Novo Jogo" >
+		
+		</h:commandButton>
+		
+		</h:form>
+		</div>
+
+<h:form>
+		
+		
+	<h:dataTable value="#{jogoBean.listaJogos}" var="Jogo" styleClass="table table-striped table-hover"> 
+
+		<h:column>
+			<f:facet name="header">Id</f:facet>
+			<h:outputText value="#{Jogo.id}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Título</f:facet>
+			<h:outputText value="#{Jogo.titulo}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Ano</f:facet>
+			<h:outputText value="#{Jogo.ano}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Genero</f:facet>
+			<h:outputText value="#{Jogo.genero}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Plataforma</f:facet>
+			<h:outputText value="#{Jogo.plataforma}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Desenvolvedor</f:facet>
+			<h:outputText value="#{Jogo.dev}" />
+		</h:column>
+
+		<h:column>
+		<f:facet name="header">Remover</f:facet>
+		
+			<h:commandButton image="cross.png" action="#{jogoBean.Remover(Jogo)}"/>
+		
+		</h:column>
+		<h:column>
+			<f:facet name="header">Alterar</f:facet>
+		<h:commandButton image="pencil.png" action="#{jogoBean.Detalhar}"  >
+			<f:param name="idJogo" value="#{Jogo.id}">  </f:param>
+		</h:commandButton>
+		</h:column>
+		
+		
+		<h:column>
+			<f:facet name="header">Resenha</f:facet>
+		<h:commandButton action="#{jogoBean.DetalharResenha}" image="document.png" >
+			<f:param name="idJogo" value="#{Jogo.id}">  </f:param>
+		</h:commandButton>
+		</h:column>
+
+	</h:dataTable>
+</h:form>
+
+
+
+
+</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<ui:composition template="/Templates/Template.xhtml"> 
+	<ui:define name="content"> 
+	<h:link value="Nova Resenha" outcome="CadastrarResenha" />
+	<h:dataTable value="#{resenhaBean.listaResenhas}" var="Resenha" styleClass="table table-striped table-hover">
+	
+	<h:column>
+	<f:facet name ="header">Id</f:facet>
+	<h:outputText value="#{Resenha.id}"></h:outputText>
+	</h:column>
+	
+	<h:column>
+	<f:facet name ="header">Título</f:facet>
+	<h:outputText value="#{Resenha.titulo}"></h:outputText>
+	</h:column>
+	
+	<h:column>
+	<f:facet name ="header">Objeto</f:facet>
+	<h:outputText value="#{Resenha.objeto.titulo}"></h:outputText>
+	</h:column>
+	
+	</h:dataTable>
+	</ui:define>
+	</ui:composition>
+	
+</html>

@@ -1,0 +1,17 @@
+.header {
+background-color: #white;
+border: 5px;
+border-top-style: hidden;
+border-right-style: hidden;
+border-bottom-style: solid;
+border-left-style: hidden;
+border-color:#007f7f;
+padding:2px;
+}
+
+a{
+	color:#3c3c3c;
+}
+a:hover {
+	color:#008080;
+}
