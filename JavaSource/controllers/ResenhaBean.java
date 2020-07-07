@@ -6,8 +6,15 @@ import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.persistence.RollbackException;
 
+import dao.FilmeDAO;
+import dao.JogoDAO;
+import dao.LivroDAO;
 import dao.ResenhaDAO;
+import model.Filme;
+import model.Jogo;
+import model.Livro;
 import model.Resenha;
 
 @Named
@@ -20,7 +27,12 @@ public class ResenhaBean implements Serializable {
 		listaResenhas = ResenhaDAO.Listar();
 		resenhaB = new Resenha();
 		
+		
 	}
+	
+	private Jogo jogoA;
+	private Filme filmeA;
+	private Livro livroA;
 	
 	private Resenha resenhaB;
 	
@@ -44,12 +56,14 @@ public class ResenhaBean implements Serializable {
 	
 	public String CadastrarResenha() {
 		System.out.println(resenhaB);
-		ResenhaDAO.Cadastrar(resenhaB);
+		try{
+			ResenhaDAO.Cadastrar(resenhaB);
+		}catch (RollbackException  e) {
+			return null;
+		}
 		resenhaB = new Resenha();
 		return ("Jogos.xhtml?faces-redirect=true");
 	}
-	
-
 	
 	public String Remover (Resenha resenhaB) {
 		ResenhaDAO.Remover(resenhaB);
@@ -57,14 +71,41 @@ public class ResenhaBean implements Serializable {
 	}
 	
 	public String Detalhar() {
-		int idResenha = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idResenha"));
+		int idResenha = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id"));
 		resenhaB = ResenhaDAO.Buscar(idResenha);
-		return("AlterarJogo.xhtml?faces-redirect=true");
+		return("AlterarResenha.xhtml?faces-redirect=true");
 	}
 	public String Alterar() {
 		ResenhaDAO.Alterar(resenhaB);
 		resenhaB = new Resenha();
-		return("Jogos.xhtml?faces-redirect=true");
+		return("Resenhas.xhtml?faces-redirect=true");
+	}
+	
+	public String ReceberId() {
+		int id = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id"));
+		jogoA = JogoDAO.Buscar(id);
+		
+		resenhaB.setObjeto(jogoA);
+		return("CadastrarResenha.xhtml?faces-redirect=true");
+	}
+	public String ReceberIdFilme() {
+		int id = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id"));
+		filmeA = FilmeDAO.Buscar(id);
+		resenhaB.setObjeto(filmeA);
+		return("CadastrarResenha.xhtml?faces-redirect=true");
+	}
+	public String ReceberIdLivro() {
+		int id = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id"));
+		livroA = LivroDAO.Buscar(id);
+		resenhaB.setObjeto(livroA);
+		return("CadastrarResenha.xhtml?faces-redirect=true");
+	}
+	
+	public String Visualizar() {
+		int id = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id"));
+		resenhaB = ResenhaDAO.Buscar(id);
+		System.out.println(resenhaB.getTitulo());
+		return("Resenha.xhtml?faces-redirect=true");
 	}
 	
 }

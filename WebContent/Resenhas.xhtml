@@ -7,11 +7,12 @@
 	<ui:composition template="/Templates/Template.xhtml"> 
 	<ui:define name="content"> 
 	<h:link value="Nova Resenha" outcome="CadastrarResenha" />
+	<h:form>
 	<h:dataTable value="#{resenhaBean.listaResenhas}" var="Resenha" styleClass="table table-striped table-hover">
 	
 	<h:column>
 	<f:facet name ="header">Id</f:facet>
-	<h:outputText value="#{Resenha.id}"></h:outputText>
+	<h:outputText value="#{Resenha.id}" outcome="Resenha" ></h:outputText>
 	</h:column>
 	
 	<h:column>
@@ -24,7 +25,29 @@
 	<h:outputText value="#{Resenha.objeto.titulo}"></h:outputText>
 	</h:column>
 	
+	<h:column>
+	<f:facet name="header">Remover</f:facet>
+	<h:commandButton image="cross.png" action="#{resenhaBean.Remover(Resenha)}"/>
+	</h:column>
+	
+	<h:column>
+			<f:facet name="header">Alterar</f:facet>
+		<h:commandButton image="pencil.png" action="#{resenhaBean.Detalhar}"  >
+			<f:param name="id" value="#{Resenha.id}">  </f:param>
+		</h:commandButton>
+		</h:column>
+	
+	<h:column>
+	<f:facet name="header">Visualizar</f:facet>
+	<h:commandButton image="view.png" action="#{resenhaBean.Visualizar()}">
+	<f:param name="id" value="#{Resenha.id}">  </f:param> 
+	</h:commandButton>
+	</h:column>
+		
+	
+	
 	</h:dataTable>
+	</h:form>
 	</ui:define>
 	</ui:composition>
 	

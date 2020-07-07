@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+
+<ui:composition template="/Templates/Template.xhtml"> 
+<title> Cadastro de Livro - BacklogWeb </title>
+<ui:define name="content"> 
+
+<div style="padding: 2px;width: 100%; clear: both;">
+<h:form>
+	
+	<h2>Cadastrar Livro</h2>
+	<h:outputLabel value="Titulo: " />
+	<h:inputText value="#{livroBean.livroB.titulo}" />
+	<br />
+	<h:outputLabel value="Ano de lançamento: " />
+	<h:inputText value="#{livroBean.livroB.ano}" />
+	<br />
+	<h:outputLabel value="Gênero: " />
+	<h:inputText value="#{livroBean.livroB.genero}" />
+	<br />
+	<h:outputLabel value="Autor " />
+	<h:inputText value="#{livroBean.livroB.autor}" />
+	<br />
+	
+	<h:commandButton action="#{livroBean.Cadastrar()}" value="Enter" />
+</h:form>
+<h:form> <h:commandButton action="Livros" value ="Voltar" /> </h:form>
+</div>
+
+
+
+</ui:define>
+</ui:composition>
+</html>

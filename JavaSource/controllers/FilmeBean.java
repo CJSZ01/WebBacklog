@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
@@ -8,7 +9,8 @@ import javax.inject.Named;
 
 import dao.FilmeDAO;
 import model.Filme;
-import java.io.Serializable;
+import model.Objeto;
+import model.Resenha;
 
 @Named
 @SessionScoped
@@ -19,7 +21,25 @@ public class FilmeBean implements Serializable {
 	public FilmeBean() {
 		listaFilmes = FilmeDAO.Listar();
 		FilmeB = new Filme();
+		objetoB = new Objeto();
+		resenha = new Resenha();
 	}
+	
+	private Objeto objetoB;
+	public Objeto getObjetoB() {
+		return objetoB;
+	}
+	public void setObjetoB(Objeto objetoB) {
+		this.objetoB = objetoB;
+	}
+	public Resenha getResenha() {
+		return resenha;
+	}
+	public void setResenha(Resenha resenha) {
+		this.resenha = resenha;
+	}
+
+	private Resenha resenha;
 	
 	private Filme FilmeB;
 	public Filme getFilmeB() {
@@ -68,6 +88,8 @@ public class FilmeBean implements Serializable {
 	public String Alterar() {
 		FilmeDAO.Alterar(FilmeB);
 		FilmeB = new Filme();
+		objetoB = new Objeto();
+		resenha = new Resenha();
 		return("Filmes.xhtml?faces-redirect=true");
 	}
 	

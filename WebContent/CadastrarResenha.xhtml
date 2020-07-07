@@ -11,7 +11,7 @@
 
 <h:form>
 <h2>Nova Resenha</h2>
-<!--   <h:inputHidden  value="#{jogoBean.objetoB}" />  -->
+  <!-- <h:inputHidden converter="omnifaces.SelectItemsConverter"  value="#{resenhaBean.resenhaB.objeto}" /> 
 
 <h:outputLabel value="Objeto:" />
 					<h:selectOneMenu id="drpObjeto"
@@ -20,12 +20,12 @@
 						converter="omnifaces.SelectItemsIndexConverter"
 						required="true" requiredMessage="Campo obrigatório!">
 						<f:selectItem itemValue="#{null}" itemLabel="   SELECIONE   " />
-						<f:selectItems value="#{jogoBean.listaJogos}" var="jogo"
-							itemLabel="#{jogo.id}" itemValue="#{jogo.id}" />
+						<f:selectItems value="#{objetoBean.listaObjetos}" var="objeto"
+							itemLabel="#{objeto.titulo}" itemValue="#{objeto.id}" />
 					</h:selectOneMenu>
 					<h:message for="drpCategorias" styleClass="text-danger" />
 					
-<!--<h:outputLabel value="Debug ID " />
+<h:outputLabel value="Debug ID " />
 <h:inputText  value="#{resenhaBean.resenhaB.objeto.id}" />-->
 
 <h:outputLabel value="Título: " />

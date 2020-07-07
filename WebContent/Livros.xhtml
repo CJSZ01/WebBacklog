@@ -6,12 +6,12 @@
 
 
 <ui:composition template="/Templates/Template.xhtml"> 
-<title> Jogos - BacklogWeb </title>
+<title> Livros - BacklogWeb </title>
 <ui:define name="content"> 
 
 <div Style="position: absolute; left: 0px;padding:12px; ">
 		<h:form>
-		<h:commandButton image="game.png" alt="Novo Jogo" style="height: 100px; width: 100px; border:2px; border-color:#007f7f;" action="CadastrarJogo" value="Novo Jogo" >
+		<h:commandButton image="book.png" alt="Novo Livro" style="height: 100px; width: 100px; border:2px; border-color:#007f7f;" action="CadastrarLivro" value="Novo Livro" >
 		
 		</h:commandButton>
 		
@@ -20,57 +20,52 @@
 
 <h:form>
 		
-		
-	<h:dataTable value="#{jogoBean.listaJogos}" var="Jogo" styleClass="table table-striped table-hover"> 
+	<h:dataTable value="#{livroBean.listaLivros}" var="Livro" styleClass="table table-striped table-hover"> 
 
 		<h:column>
 			<f:facet name="header">Id</f:facet>
-			<h:outputText value="#{Jogo.id}" />
+			<h:outputText value="#{Livro.id}" />
 		</h:column>
 		
 		<h:column>
 			<f:facet name="header">Título</f:facet>
-			<h:outputText value="#{Jogo.titulo}" />
+			<h:outputText value="#{Livro.titulo}" />
 		</h:column>
 		
 		<h:column>
 			<f:facet name="header">Ano</f:facet>
-			<h:outputText value="#{Jogo.ano}" />
+			<h:outputText value="#{Livro.ano}" />
 		</h:column>
 		
 		<h:column>
 			<f:facet name="header">Genero</f:facet>
-			<h:outputText value="#{Jogo.genero}" />
+			<h:outputText value="#{Livro.genero}" />
 		</h:column>
 		
 		<h:column>
-			<f:facet name="header">Plataforma</f:facet>
-			<h:outputText value="#{Jogo.plataforma}" />
+			<f:facet name="header">Autor</f:facet>
+			<h:outputText value="#{Livro.autor}" />
 		</h:column>
 		
-		<h:column>
-			<f:facet name="header">Desenvolvedor</f:facet>
-			<h:outputText value="#{Jogo.dev}" />
-		</h:column>
 
 		<h:column>
 		<f:facet name="header">Remover</f:facet>
 		
-			<h:commandButton image="cross.png" action="#{jogoBean.Remover(Jogo)}"/>
+			<h:commandButton image="cross.png" action="#{livroBean.Remover(Livro)}"/>
 		
 		</h:column>
 		<h:column>
 			<f:facet name="header">Alterar</f:facet>
-		<h:commandButton image="pencil.png" action="#{jogoBean.Detalhar}"  >
-			<f:param name="id" value="#{Jogo.id}">  </f:param>
+		<h:commandButton image="pencil.png" action="#{livroBean.Detalhar}"  >
+			<f:param name="idLivro" value="#{Livro.id}">  </f:param>
 		</h:commandButton>
 		</h:column>
 		
 		
 		<h:column>
 			<f:facet name="header">Resenha</f:facet>
-		<h:commandButton action="#{resenhaBean.ReceberId}" image="document.png" >
-			<f:param name="id" value="#{Jogo.id}">  </f:param>
+		<h:commandButton action="#{resenhaBean.ReceberIdLivro()}" image="document.png" >
+			<f:param name="id" value="#{Livro.id}">  </f:param>
 		</h:commandButton>
 		</h:column>
 

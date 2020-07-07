@@ -90,6 +90,8 @@ public class JogoBean implements Serializable {
 	public String Alterar() {
 		JogoDAO.Alterar(jogoB);
 		jogoB = new Jogo();
+		objetoB = new Objeto();
+		resenha = new Resenha();
 		return("Jogos.xhtml?faces-redirect=true");
 	}
 	

@@ -61,8 +61,8 @@
 		
 		<h:column>
 			<f:facet name="header">Resenha</f:facet>
-		<h:commandButton action="#{filmeBean.Detalhar}" image="document.png" >
-			<f:param name="idFilme" value="#{Filme.id}">  </f:param>
+		<h:commandButton action="#{resenhaBean.ReceberIdFilme()}" image="document.png" >
+			<f:param name="id" value="#{Filme.id}">  </f:param>
 		</h:commandButton>
 		</h:column>
 

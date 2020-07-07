@@ -58,7 +58,7 @@ public class Objeto {
 		this.usuario = usuario;
 	}
 	
-	@OneToOne(mappedBy = "objeto",cascade = CascadeType.MERGE)
+	@OneToOne(mappedBy = "objeto" ,cascade = CascadeType.MERGE)
 	@JoinColumn(name="id", 
     insertable=true, updatable=false, 
     nullable=true)

@@ -3,6 +3,7 @@
 	<persistence-unit name="BacklogServer" transaction-type="RESOURCE_LOCAL"> 
 	<class>model.Jogo</class>
 	<class>model.Filme</class>
+	<class>model.Livro</class>
 	<class>model.Resenha</class>
 	
 		<properties>
